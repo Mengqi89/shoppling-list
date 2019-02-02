@@ -17,24 +17,28 @@ function getInputItem () {
         </button>
       </div>
     </li>`)
-      
+
     });
 };
 
 function toggleCheck() {
   $(".shopping-list").on('click', '.shopping-item-toggle', function(event) {
-    console.log('toggle button');
-   $('.shopping-item').toggleClass('shopping-item__checked');
-   console.log($(this));
-   
+  $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
   }
-  )
+);
+}
+
+function handleDeleteItem() {
+  $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+    $(this).closest('li').remove();
+  });
 }
 
 
 function startApp() {
   getInputItem();
   toggleCheck();
+  handleDeleteItem();
 }
 
 $(startApp());
